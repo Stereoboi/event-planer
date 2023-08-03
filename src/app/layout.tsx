@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins, Alata } from "next/font/google";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import bg from "../../public/bg.jpg";
 const poppins = Poppins({
   weight: ["400", "500", "700"],
@@ -28,8 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} ${alata.variable} `}>
         <Navbar />
-        <div className="bg-hero bg-fixed bg-cover bg-center min-h-screen">
-          <div className="p-[24px]">{children}</div>
+        <div className="bg-hero bg-fixed bg-cover  min-h-screen">
+          <div className="px-[24px] py-[40px] md:p-[40px] lg:px-[87px] lg:py-[18px]">
+            {children}
+          </div>
         </div>
       </body>
     </html>

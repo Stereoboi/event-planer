@@ -59,7 +59,7 @@ const SearchInput = () => {
         name="search"
         onChange={handleInputChange}
         value={formik.values.search}
-        className="block w-full outline-none h-[48px] px-10 py-2 font-poppins rounded-lg text-action bg-white border-none focus:border-blue-500 \
+        className="block w-full outline-none h-[48px] px-10 py-2 font-poppins rounded-lg text-main bg-white border-none focus:border-blue-500 \
         md:w-[368px] lg:w-[410px]
         "
         placeholder="Search by keywords"
