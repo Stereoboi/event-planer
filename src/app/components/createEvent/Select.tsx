@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Select from "react-select";
 
@@ -25,8 +26,13 @@ export default function SelectField({
         id={id}
         name={name}
         value={options.find((option) => option.value === value)}
-        options={options}
-        onChange={(selectedOption) => onChange(selectedOption.value)}
+        options={options.map((option) => ({
+          ...option,
+          key: option.value,
+        }))}
+        onChange={(selectedOption) => {
+          onChange({ target: { name, value: selectedOption.value } });
+        }}
         styles={{
           control: (provided, isFocused) => ({
             ...provided,

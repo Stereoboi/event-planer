@@ -1,12 +1,23 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import InputField from "./InputField";
 import TextareaField from "./Textarea";
 import SelectField from "./Select";
 import UploadBtn from "./UploadButton";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CreateEventForm() {
+  const [categoryId, setCategoryId] = useState("");
+  const [priorityId, setPriorityId] = useState("");
+
+  // const categoryId = generateUniqueId();
+  // const priorityId = generateUniqueId();
+  useEffect(() => {
+    setCategoryId(Date.now().toString());
+    setPriorityId(Date.now().toString());
+  }, []);
+
   const categories = [
     { value: "category1", label: "Category 1" },
     { value: "category2", label: "Category 2" },
@@ -32,6 +43,7 @@ export default function CreateEventForm() {
     },
     onSubmit: (values) => {
       console.log(values);
+      console.log(categoryId);
 
       formik.resetForm();
     },
@@ -67,7 +79,7 @@ export default function CreateEventForm() {
 
         <SelectField
           label="Category"
-          id="category"
+          id={categoryId}
           name="category"
           value={formik.values.category}
           options={categories}
@@ -76,7 +88,7 @@ export default function CreateEventForm() {
 
         <SelectField
           label="Priority"
-          id="priority"
+          id={priorityId}
           name="priority"
           value={formik.values.priority}
           options={priorities}

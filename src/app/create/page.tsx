@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import CreateEventForm from "../components/createEvent/CreateEventForm";
 import BackButton from "../components/BackButton";
