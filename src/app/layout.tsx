@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins, Alata } from "next/font/google";
 import Navbar from "./components/Navbar/Navbar";
-import bg from "../../public/bg.jpg";
+
 const poppins = Poppins({
   weight: ["400", "500", "700"],
   subsets: ["latin"],

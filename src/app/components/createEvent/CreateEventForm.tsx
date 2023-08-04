@@ -5,31 +5,21 @@ import InputField from "./InputField";
 import TextareaField from "./Textarea";
 import SelectField from "./Select";
 import UploadBtn from "./UploadButton";
-import { v4 as uuidv4 } from "uuid";
+import { categories, priorities } from "../../../../util/variables";
+import { EventType } from "../../../../types/EventType";
+import addPostToDatabase from "../../../../lib/addPostToDb";
 
 export default function CreateEventForm() {
   const [categoryId, setCategoryId] = useState("");
   const [priorityId, setPriorityId] = useState("");
+  const [ready, setReady] = useState(false);
+  const [eventValue, setEventValue] = useState<EventType>({} as EventType);
+  const [image, setImage] = useState<string>();
 
-  // const categoryId = generateUniqueId();
-  // const priorityId = generateUniqueId();
   useEffect(() => {
     setCategoryId(Date.now().toString());
     setPriorityId(Date.now().toString());
   }, []);
-
-  const categories = [
-    { value: "category1", label: "Category 1" },
-    { value: "category2", label: "Category 2" },
-    { value: "category3", label: "Category 3" },
-    { value: "category4", label: "Category 4" },
-  ];
-
-  const priorities = [
-    { value: "low", label: "Low" },
-    { value: "medium", label: "Medium" },
-    { value: "high", label: "High" },
-  ];
 
   const formik = useFormik({
     initialValues: {
@@ -42,12 +32,40 @@ export default function CreateEventForm() {
       priority: "",
     },
     onSubmit: (values) => {
-      console.log(values);
-      console.log(categoryId);
+      setEventValue({
+        title: values.title,
+        description: values.description,
+        date: values.date,
+        time: values.time,
+        location: values.location,
+        category: values.category,
+        priority: values.priority,
+        img: image,
+      });
+
+      setReady(true);
 
       formik.resetForm();
     },
   });
+
+  useEffect(() => {
+    if (ready) {
+      console.log(eventValue);
+
+      const addPost = async () => {
+        try {
+          await addPostToDatabase(eventValue);
+          //  mutate();
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      addPost();
+
+      setReady(false);
+    }
+  }, [ready, eventValue]);
 
   return (
     <form
@@ -122,11 +140,14 @@ export default function CreateEventForm() {
         />
       </div>
       <div className="flex justify-center">
-        <UploadBtn />
+        <UploadBtn state={setImage} />
       </div>
 
       <div className="flex justify-center md:flex-row-reverse md:justify-start">
-        <button className="text-white bg-main px-[74px] py-[16px] rounded-lg font-poppins hover:bg-action ease-in duration-300 text-[16px] block">
+        <button
+          type="submit"
+          className="text-white bg-main px-[74px] py-[16px] rounded-lg font-poppins hover:bg-action ease-in duration-300 text-[16px] block"
+        >
           Add event
         </button>
       </div>
