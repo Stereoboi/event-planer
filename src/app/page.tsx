@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  // const result: Post[] = await getEvents("1");
+  const result: Post[] = await getEvents("1");
   // console.log(result);
 
   return (
     <main>
       <ButtonGroup />
-      {/* <EventList data={result} /> */}
+      <EventList data={result} />
     </main>
   );
 }
