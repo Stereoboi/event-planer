@@ -52,7 +52,7 @@ export default function EventCard({ data }: { data: Post }) {
         </div>
         <div className=" hidden group-hover:flex justify-end w-full">
           <Link
-            href="/create"
+            href={`/event/${data._id}`}
             className=" mr-4 mb-4 px-[24px] py-[10px] rounded-lg text-white
              bg-main hover:bg-action ease-in duration-300"
           >
