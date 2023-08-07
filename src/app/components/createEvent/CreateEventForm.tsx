@@ -8,6 +8,7 @@ import UploadBtn from "./UploadButton";
 import { categories, priorities } from "../../../../util/variables";
 import { EventType } from "../../../../types/EventType";
 import addPostToDatabase from "../../../../lib/addPostToDb";
+import * as Yup from "yup";
 
 export default function CreateEventForm() {
   const [categoryId, setCategoryId] = useState("");
@@ -31,6 +32,23 @@ export default function CreateEventForm() {
       category: "",
       priority: "",
     },
+    validationSchema: Yup.object({
+      title: Yup.string()
+        .min(5, "Must be 5 characters or more")
+        .required("This field is required")
+        .matches(/^[A-Za-z]/, "Title must start with a letter"),
+      description: Yup.string()
+        .required("This field is required")
+        .matches(/^[A-Za-z]/, "Title must start with a letter"),
+      date: Yup.string().required("This field is required"),
+      time: Yup.string().required("This field is required"),
+      location: Yup.string()
+        .required("This field is required")
+        .matches(/^[A-Za-z]/, "Title must start with a letter"),
+      category: Yup.string().required("This field is required"),
+      priority: Yup.string().required("This field is required"),
+    }),
+
     onSubmit: (values) => {
       setEventValue({
         title: values.title,
@@ -40,7 +58,7 @@ export default function CreateEventForm() {
         location: values.location,
         category: values.category,
         priority: values.priority,
-        img: image,
+        img: image || process.env.NEXT_PUBLIC_PLACEHOLDER_URL,
       });
 
       setReady(true);
@@ -82,6 +100,7 @@ export default function CreateEventForm() {
           type="text"
           value={formik.values.title}
           onChange={formik.handleChange}
+          error={formik.touched.title && formik.errors.title}
         />
 
         <div className="row-span-2">
@@ -91,6 +110,7 @@ export default function CreateEventForm() {
             name="description"
             value={formik.values.description}
             onChange={formik.handleChange}
+            error={formik.touched.description && formik.errors.description}
           />
         </div>
 
@@ -101,6 +121,7 @@ export default function CreateEventForm() {
           value={formik.values.category}
           options={categories}
           onChange={formik.handleChange}
+          error={formik.touched.category && formik.errors.category}
         />
 
         <SelectField
@@ -110,6 +131,7 @@ export default function CreateEventForm() {
           value={formik.values.priority}
           options={priorities}
           onChange={formik.handleChange}
+          error={formik.touched.priority && formik.errors.priority}
         />
         <InputField
           label="Select date"
@@ -118,6 +140,7 @@ export default function CreateEventForm() {
           type="date"
           value={formik.values.date}
           onChange={formik.handleChange}
+          error={formik.touched.date && formik.errors.date}
         />
 
         <InputField
@@ -127,6 +150,7 @@ export default function CreateEventForm() {
           type="time"
           value={formik.values.time}
           onChange={formik.handleChange}
+          error={formik.touched.time && formik.errors.time}
         />
 
         <InputField
@@ -136,6 +160,7 @@ export default function CreateEventForm() {
           type="text"
           value={formik.values.location}
           onChange={formik.handleChange}
+          error={formik.touched.location && formik.errors.location}
         />
       </div>
       <div className="flex justify-center">

@@ -7,12 +7,14 @@ export default function TextareaField({
   name,
   value,
   onChange,
+  error,
 }: {
   label: string;
   id: string;
   name: string;
   value: string;
   onChange: any;
+  error: any;
 }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -33,9 +35,12 @@ export default function TextareaField({
           />
         </div>
       )}
-      <label htmlFor={id} className="block mb-1 text-sm font-medium text-main">
-        {label}
-      </label>
+      <div className=" mb-1 flex  items-center justify-between">
+        <label htmlFor={id} className="block  text-sm font-medium text-main">
+          {label}
+        </label>
+        <p className=" text-xs text-red-600">{error}</p>
+      </div>
       <textarea
         id={id}
         name={name}

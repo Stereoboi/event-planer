@@ -9,6 +9,7 @@ export default function SelectField({
   value,
   options,
   onChange,
+  error,
 }: {
   label: string;
   id: string;
@@ -16,12 +17,19 @@ export default function SelectField({
   value: string;
   options: any[];
   onChange: any;
+  error: any;
 }) {
   return (
     <div className="mb-[20px]">
-      <label htmlFor={id} className="block mb-1 text-sm font-medium text-main">
-        {label}
-      </label>
+      <div className=" mb-1 flex  items-center justify-between">
+        <label
+          htmlFor={id}
+          className="block mb-1 text-sm font-medium text-main"
+        >
+          {label}
+        </label>
+        <p className=" text-xs text-red-600">{error}</p>
+      </div>
       <Select
         id={id}
         name={name}

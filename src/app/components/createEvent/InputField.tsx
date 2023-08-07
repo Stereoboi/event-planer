@@ -9,6 +9,7 @@ export default function InputField({
   type,
   value,
   onChange,
+  error,
 }: {
   label: string;
   id: string;
@@ -16,6 +17,7 @@ export default function InputField({
   type: string;
   value: string;
   onChange: any;
+  error: any;
 }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -36,9 +38,12 @@ export default function InputField({
           />
         </div>
       )}
-      <label htmlFor={id} className="block mb-1 text-sm font-medium text-main">
-        {label}
-      </label>
+      <div className=" mb-1 flex  items-center justify-between">
+        <label htmlFor={id} className="block  text-sm font-medium text-main">
+          {label}
+        </label>
+        <p className=" text-xs text-red-600">{error}</p>
+      </div>
       <input
         id={id}
         name={name}
