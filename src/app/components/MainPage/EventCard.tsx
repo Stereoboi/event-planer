@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import { Post } from "../../../../types/PostType";
 import Link from "next/link";
 import { formatDate } from "../../../../util/dateFormatter";
 
 export default function EventCard({ data }: { data: Post }) {
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="relative h-[480px] shadow-custom bg-slate-50 rounded-lg font-poppins group">
@@ -13,7 +14,7 @@ export default function EventCard({ data }: { data: Post }) {
           {data.category}
         </p>
         <p
-          className={`bg-slate-50 ml-[12px] rounded-lg px-[12px] py-[6px] ${
+          className={`bg-slate-50 ml-[12px] rounded-lg px-[12px] py-[6px]  ${
             data.priority === "low"
               ? "text-green-500"
               : data.priority === "medium"
@@ -37,7 +38,7 @@ export default function EventCard({ data }: { data: Post }) {
          text-main bg-slate-50 bg-opacity-80 text-sm "
         >
           <p>
-            {formatDate(data.date)} <span className="px-[2px]">at</span>{" "}
+            {formatDate(data.date)} <span className="px-[2px]">at</span>
             {data.time}
           </p>
           <p>{data.location}</p>
