@@ -4,8 +4,10 @@ import { IconContext } from "react-icons";
 import { CiSearch } from "react-icons/ci";
 import { IoIosClose } from "react-icons/io";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 
 const SearchInput = () => {
+  const router = useRouter();
   const [isActive, setIsActive] = useState(false);
 
   const formik = useFormik({
@@ -15,6 +17,8 @@ const SearchInput = () => {
 
     onSubmit: (values) => {
       console.log(values);
+
+      router.push(`/search/${values.search}`);
       formik.resetForm();
     },
   });

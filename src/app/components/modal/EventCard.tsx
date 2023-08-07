@@ -25,6 +25,10 @@ export default function EventCard({ data }: { data: Post }) {
     setState(true);
   };
 
+  // const editEvent = () => {
+  //   router
+  // }
+
   return (
     <div className="font-poppins bg-slate-50 shadow-custom rounded-lg  ">
       {/* <h1 className="absolute top-28 font-semibold  text-[24px] md:text-[32px] text-main">
@@ -64,18 +68,17 @@ export default function EventCard({ data }: { data: Post }) {
             </p>
           </div>
           <div className="mt-[28px] flex justify-between md:justify-end">
-            <Link
-              href={"/"}
+            <a
+              href={`/edit/${data._id}`}
               className="px-[42.5px] py-[8px] text-sm font-poppins text-main rounded-lg 
               border-2 border-main cursor-pointer hover:bg-slate-200
               md:mr-[16px] ease-in duration-300 "
             >
               Edit
-            </Link>
+            </a>
 
             <button
               onClick={deleteEvent}
-              // href={"/"}
               className="px-[16px] py-[8px] text-sm font-poppins bg-main rounded-lg 
               border-2 border-main text-white cursor-pointer hover:bg-action ease-in duration-300"
             >

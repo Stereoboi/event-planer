@@ -9,7 +9,7 @@ export default function CreatePage() {
       <div className="flex flex-col ">
         <BackButton />
         <h1
-          className="text-[24px] font-poppinspop font-semibold
+          className="text-[24px] font-poppins font-semibold
         md:text-[32px]
         "
         >

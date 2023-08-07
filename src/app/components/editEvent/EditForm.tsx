@@ -1,15 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
-import InputField from "./InputField";
-import TextareaField from "./Textarea";
-import SelectField from "./Select";
-import UploadBtn from "./UploadButton";
+import InputField from "../createEvent/InputField";
+import TextareaField from "../createEvent/Textarea";
+import SelectField from "../createEvent/Select";
+import UploadBtn from "../createEvent/UploadButton";
 import { categories, priorities } from "../../../../util/variables";
 import { EventType } from "../../../../types/EventType";
 import addPostToDatabase from "../../../../lib/addPostToDb";
+import { Post } from "../../../../types/PostType";
+import editEvent from "../../../../lib/editEvent";
+import { useRouter } from "next/navigation";
 
-export default function CreateEventForm() {
+export default function EditEventForm({ data }: { data: Post }) {
+  const router = useRouter();
   const [categoryId, setCategoryId] = useState("");
   const [priorityId, setPriorityId] = useState("");
   const [ready, setReady] = useState(false);
@@ -23,13 +27,13 @@ export default function CreateEventForm() {
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      description: "",
-      date: "",
-      time: "",
-      location: "",
-      category: "",
-      priority: "",
+      title: data.title,
+      description: data.description,
+      date: data.date,
+      time: data.time,
+      location: data.location,
+      category: data.category,
+      priority: data.priority,
     },
     onSubmit: (values) => {
       setEventValue({
@@ -51,17 +55,16 @@ export default function CreateEventForm() {
 
   useEffect(() => {
     if (ready) {
-      console.log(eventValue);
-
-      const addPost = async () => {
+      const addEventValue = async () => {
         try {
-          await addPostToDatabase(eventValue);
+          await editEvent(eventValue, data._id);
         } catch (error) {
           console.log(error);
         }
       };
-      addPost();
-
+      addEventValue();
+      router.push("/");
+      router.refresh();
       setReady(false);
     }
   }, [ready, eventValue]);
@@ -147,7 +150,7 @@ export default function CreateEventForm() {
           type="submit"
           className="text-white bg-main px-[74px] py-[16px] rounded-lg font-poppins hover:bg-action ease-in duration-300 text-[16px] block"
         >
-          Add event
+          Edit event
         </button>
       </div>
     </form>

@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { IoIosAdd } from "react-icons/io";
 import { LiaFilterSolid } from "react-icons/lia";
-
+import { categories } from "../../../../util/variables";
+import { useRouter } from "next/navigation";
 export default function ButtonGroup() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Category");
 
@@ -13,6 +15,8 @@ export default function ButtonGroup() {
   };
 
   const handleOptionClick = (option: string) => {
+    console.log(option);
+    router.push(`/sorted/${option}`);
     setSelectedOption(option);
     setIsOpen(false);
   };
@@ -51,24 +55,17 @@ export default function ButtonGroup() {
 
               <p className="text-main">{selectedOption}</p>
               <ul className="absolute top-[53px] left-0 z-10 bg-white rounded-b-lg shadow-md w-full">
-                <li
-                  className="border-b-2 border-t-2 border-slate-400 p-2 text-slate-400 hover:text-action"
-                  onClick={() => handleOptionClick("1 variant")}
-                >
-                  1 variant
-                </li>
-                <li
-                  className="border-b-2  border-slate-400 p-2 text-slate-400 hover:text-action"
-                  onClick={() => handleOptionClick("2 variant")}
-                >
-                  2 variant
-                </li>
-                <li
-                  className=" border-slate-400 p-2 text-slate-400 hover:text-action"
-                  onClick={() => handleOptionClick("3 variant")}
-                >
-                  3 variant
-                </li>
+                {categories.map((el) => {
+                  return (
+                    <li
+                      className="border-b-2  border-slate-400 p-2 text-slate-400 hover:text-action"
+                      onClick={() => handleOptionClick(el.value)}
+                      key={el.value}
+                    >
+                      {el.label}
+                    </li>
+                  );
+                })}
               </ul>
             </>
           )}

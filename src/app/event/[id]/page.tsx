@@ -27,7 +27,6 @@ async function getEventById(id: string) {
 
 export default async function EventPage({ params: { id } }: Params) {
   const post: Post = await getEventById(id);
-  console.log(post);
 
   return (
     <div>

@@ -1,5 +1,6 @@
 import React from "react";
 import SearchInput from "./Input";
+import Link from "next/link";
 export default function Navbar() {
   return (
     <div
@@ -8,13 +9,14 @@ export default function Navbar() {
      lg:py-[22px] lg:px-[80px] 
      "
     >
-      <h1
+      <Link
+        href={"/"}
         className="font-alata text-[24px] text text-main mb-[31px]  \
-      md:mb-[0]
+      md:mb-[0] cursor-pointer
       "
       >
         Event Planner
-      </h1>
+      </Link>
       <SearchInput />
     </div>
   );
