@@ -1,8 +1,8 @@
 import ButtonGroup from "./components/MainPage/ButtonGroup";
-import { Metadata } from "next";
 import { Post } from "../../types/PostType";
 import EventList from "./components/MainPage/EventList";
 import getEvents from "../../lib/getEvent";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Events page",

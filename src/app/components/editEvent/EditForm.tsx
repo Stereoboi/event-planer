@@ -11,7 +11,7 @@ import addPostToDatabase from "../../../../lib/addPostToDb";
 import { Post } from "../../../../types/PostType";
 import editEvent from "../../../../lib/editEvent";
 import { useRouter } from "next/navigation";
-import * as Yup from "yup";
+import { eventSchema } from "../../../../util/validationSchema";
 
 export default function EditEventForm({ data }: { data: Post }) {
   const router = useRouter();
@@ -36,22 +36,7 @@ export default function EditEventForm({ data }: { data: Post }) {
       category: data.category,
       priority: data.priority,
     },
-    validationSchema: Yup.object({
-      title: Yup.string()
-        .min(5, "Must be 5 characters or more")
-        .required("This field is required")
-        .matches(/^[A-Za-z]/, "Title must start with a letter"),
-      description: Yup.string()
-        .required("This field is required")
-        .matches(/^[A-Za-z]/, "Title must start with a letter"),
-      date: Yup.string().required("This field is required"),
-      time: Yup.string().required("This field is required"),
-      location: Yup.string()
-        .required("This field is required")
-        .matches(/^[A-Za-z]/, "Title must start with a letter"),
-      category: Yup.string().required("This field is required"),
-      priority: Yup.string().required("This field is required"),
-    }),
+    validationSchema: eventSchema,
     onSubmit: (values) => {
       setEventValue({
         title: values.title,

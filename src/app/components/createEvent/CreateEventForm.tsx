@@ -8,7 +8,7 @@ import UploadBtn from "./UploadButton";
 import { categories, priorities } from "../../../../util/variables";
 import { EventType } from "../../../../types/EventType";
 import addPostToDatabase from "../../../../lib/addPostToDb";
-import * as Yup from "yup";
+import { eventSchema } from "../../../../util/validationSchema";
 
 export default function CreateEventForm() {
   const [categoryId, setCategoryId] = useState("");
@@ -32,22 +32,7 @@ export default function CreateEventForm() {
       category: "",
       priority: "",
     },
-    validationSchema: Yup.object({
-      title: Yup.string()
-        .min(5, "Must be 5 characters or more")
-        .required("This field is required")
-        .matches(/^[A-Za-z]/, "Title must start with a letter"),
-      description: Yup.string()
-        .required("This field is required")
-        .matches(/^[A-Za-z]/, "Title must start with a letter"),
-      date: Yup.string().required("This field is required"),
-      time: Yup.string().required("This field is required"),
-      location: Yup.string()
-        .required("This field is required")
-        .matches(/^[A-Za-z]/, "Title must start with a letter"),
-      category: Yup.string().required("This field is required"),
-      priority: Yup.string().required("This field is required"),
-    }),
+    validationSchema: eventSchema,
 
     onSubmit: (values) => {
       setEventValue({
@@ -69,8 +54,6 @@ export default function CreateEventForm() {
 
   useEffect(() => {
     if (ready) {
-      console.log(eventValue);
-
       const addPost = async () => {
         try {
           await addPostToDatabase(eventValue);

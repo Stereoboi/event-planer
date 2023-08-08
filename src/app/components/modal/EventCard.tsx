@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Post } from "../../../../types/PostType";
-import Link from "next/link";
 import { formatDate } from "../../../../util/dateFormatter";
 import deleteNewsById from "../../../../lib/deleteEventById";
-import { redirect } from "next/navigation";
 
 export default function EventCard({ data }: { data: Post }) {
   const router = useRouter();
@@ -30,7 +28,7 @@ export default function EventCard({ data }: { data: Post }) {
   // }
 
   return (
-    <div className="font-poppins bg-slate-50 shadow-custom rounded-lg  ">
+    <div className="font-poppins bg-slate-50 shadow-custom rounded-lg lg:w-[630px] ">
       {/* <h1 className="absolute top-28 font-semibold  text-[24px] md:text-[32px] text-main">
         {data.title}
       </h1> */}
@@ -41,7 +39,7 @@ export default function EventCard({ data }: { data: Post }) {
           className="max-h-[168px] md:max-h-[272px] w-full object-cover rounded-lg"
         />
         <div className="px-[16px] md:px-[24px] lg:px-[16px] pt-[20px] pb-[40px] ">
-          <p className="font-normal text-[14px] pb-[24px]">
+          <p className="font-normal text-[14px] pb-[24px] text-ellipsis overflow-hidden ... ">
             {data.description}
           </p>
           <div className="flex flex-wrap ">

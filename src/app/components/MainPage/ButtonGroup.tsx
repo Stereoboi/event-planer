@@ -15,7 +15,6 @@ export default function ButtonGroup() {
   };
 
   const handleOptionClick = (option: string) => {
-    console.log(option);
     router.push(`/sorted/${option}`);
     setSelectedOption(option);
     setIsOpen(false);

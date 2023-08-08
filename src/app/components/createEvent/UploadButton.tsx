@@ -19,7 +19,7 @@ export default function UploadBtn({ state }: any) {
 
   return (
     // flex min-h-screen flex-col items-center justify-start p-24
-    <main className="flex mt-3 mb-3">
+    <main className="flex  mb-3">
       <UploadButton<OurFileRouter>
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
@@ -27,9 +27,6 @@ export default function UploadBtn({ state }: any) {
             setImages(res);
             state(res[0].fileUrl);
           }
-          // alert("Upload Completed");
-          console.log("Files:", res);
-          // alert("Upload completed");
         }}
         onUploadError={(error: Error) => {
           // Do something with the error.

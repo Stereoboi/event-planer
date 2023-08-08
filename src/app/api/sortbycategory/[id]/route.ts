@@ -4,7 +4,6 @@ import Event from "@/models/EventPost";
 
 export const GET = async (request: Request, { params }: { params: any }) => {
   const { id } = params;
-  console.log(id);
 
   try {
     await connect();

@@ -22,10 +22,7 @@ export default function SelectField({
   return (
     <div className="mb-[20px]">
       <div className=" mb-1 flex  items-center justify-between">
-        <label
-          htmlFor={id}
-          className="block mb-1 text-sm font-medium text-main"
-        >
+        <label htmlFor={id} className="block  text-sm font-medium text-main">
           {label}
         </label>
         <p className=" text-xs text-red-600">{error}</p>

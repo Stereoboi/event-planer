@@ -5,8 +5,6 @@ import Link from "next/link";
 import { formatDate } from "../../../../util/dateFormatter";
 
 export default function EventCard({ data }: { data: Post }) {
-  // console.log(data);
-
   return (
     <div className="relative h-[480px] shadow-custom bg-slate-50 rounded-lg font-poppins group">
       <div className="absolute flex left-3 top-3 text-[14px] ">

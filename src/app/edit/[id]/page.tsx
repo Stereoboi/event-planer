@@ -8,9 +8,17 @@ type Params = {
   };
 };
 
+export async function generateMetadata({ params: { id } }: Params) {
+  const event = await getEventById(id);
+
+  return {
+    title: `${event.title} edit page`,
+    description: `${event.title} edit page`,
+  };
+}
+
 export default async function EditPage({ params: { id } }: Params) {
   const event = await getEventById(id);
-  console.log(event);
 
   return (
     <div>

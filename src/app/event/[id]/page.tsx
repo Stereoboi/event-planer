@@ -9,6 +9,15 @@ type Params = {
   };
 };
 
+export async function generateMetadata({ params: { id } }: Params) {
+  const post: Post = await getEventById(id);
+
+  return {
+    title: `${post.title} page`,
+    description: `Information about ${post.title} event`,
+  };
+}
+
 async function getEventById(id: string) {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_DEPLOY_URL}/api/getevents/${id}`,

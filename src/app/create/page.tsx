@@ -2,6 +2,12 @@
 import React from "react";
 import CreateEventForm from "../components/createEvent/CreateEventForm";
 import BackButton from "../components/BackButton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Create page",
+  description: "Create page",
+};
 
 export default function CreatePage() {
   return (

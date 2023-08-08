@@ -2,6 +2,13 @@ import React from "react";
 import ButtonGroup from "../../components/MainPage/ButtonGroup";
 import EventList from "@/app/components/MainPage/EventList";
 import BackButton from "@/app/components/BackButton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Category page",
+  description: "Category page",
+};
+
 type Params = {
   params: {
     id: string;

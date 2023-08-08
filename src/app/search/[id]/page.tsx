@@ -2,6 +2,13 @@ import React from "react";
 import EventList from "@/app/components/MainPage/EventList";
 import ButtonGroup from "@/app/components/MainPage/ButtonGroup";
 import BackButton from "@/app/components/BackButton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Search page",
+  description: "Search page",
+};
+
 type Params = {
   params: {
     id: string;
@@ -25,10 +32,7 @@ async function findByKeyWord(id: string) {
 }
 
 export default async function page({ params: { id } }: Params) {
-  console.log(id);
-
   const post = await findByKeyWord(id);
-  console.log(post);
 
   return (
     <>

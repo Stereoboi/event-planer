@@ -16,8 +16,6 @@ const SearchInput = () => {
     },
 
     onSubmit: (values) => {
-      console.log(values);
-
       router.push(`/search/${values.search}`);
       formik.resetForm();
     },
