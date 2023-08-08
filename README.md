@@ -4,23 +4,23 @@ Welcome to the Event Planner application's README! Here you'll find details abou
 
 ## Features:
 
-Event Listing: The main page displays a list of upcoming events. All events are stored in a MongoDB database on the backend.
+- Event Listing: The main page displays a list of upcoming events. All events are stored in a MongoDB database on the backend.
 
-Category Sorting: Users can sort events by categories, enhancing their ability to find specific types of events.
+- Category Sorting: Users can sort events by categories, enhancing their ability to find specific types of events.
 
-Keyword Search: Utilizing the search bar in the navbar, users can quickly find events by entering keywords, which accelerates the process of finding desired events.
+- Keyword Search: Utilizing the search bar in the navbar, users can quickly find events by entering keywords, which accelerates the process of finding desired events.
 
-Event Creation: The app includes a dedicated page for creating events. Users can add event details, including photos. If no photo is provided, a default image is used.
+- Event Creation: The app includes a dedicated page for creating events. Users can add event details, including photos. If no photo is provided, a default image is used.
 
-Form Validation: Event creation forms are powered by Formik, ensuring that all fields are properly validated to ensure correct form completion.
+- Form Validation: Event creation forms are powered by Formik, ensuring that all fields are properly validated to ensure correct form completion.
 
-Event Preview: When users click on an event, a modal window opens to display event details. Thanks to the "Intercepting routes" concept in Next.js, the modal window has its own URL. This feature allows users to easily share event links with friends, providing an improved user experience.
+- Event Preview: When users click on an event, a modal window opens to display event details. Thanks to the "Intercepting routes" concept in Next.js, the modal window has its own URL. This feature allows users to easily share event links with friends, providing an improved user experience.
 
-Editing and Deletion: Users have the ability to edit and delete their created events, giving them control over the content they've added.
+- Editing and Deletion: Users have the ability to edit and delete their created events, giving them control over the content they've added.
 
-Responsive Design: The application's layout is responsive, with breakpoints for mobile (320px), tablet (768px), and desktop (1024px) screens.
+- Responsive Design: The application's layout is responsive, with breakpoints for mobile (320px), tablet (768px), and desktop (1024px) screens.
 
-Styling: Tailwind CSS has been used for styling, ensuring a clean and modern visual appearance.
+- Styling: Tailwind CSS has been used for styling, ensuring a clean and modern visual appearance.
 
 ## Technical Insights:
 
