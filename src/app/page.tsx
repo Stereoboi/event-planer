@@ -15,7 +15,13 @@ export default async function Home() {
   return (
     <main>
       <ButtonGroup />
-      <EventList data={result} />
+      {result.length > 0 ? (
+        <EventList data={result} />
+      ) : (
+        <h2 className="text-center text-lg font-poppins mt-32">
+          There are no events yet ¯\_(ツ)_/¯
+        </h2>
+      )}
     </main>
   );
 }
